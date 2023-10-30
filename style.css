@@ -1,0 +1,231 @@
+/*-----------------------------------------------------------------------
+              _
+             /_\
+             )_(
+             |=|
+             |=|
+       ______|=|___________
+      |  ____|=|_____     /
+      | /    |=|    /    /       THE LEGEND OF
+      |/ ____|_|__ / /  / _________ ______     _________       _____   TM
+         \_______ / // / \    ___  |\    /     \    __  \      \    \
+            | = |/ // /   |  |   \ | |  |       |  |  \  \     /  _  \
+            |/V\/ // /    |  |    \| |  |       |  |   \  \   /  / \  \
+            | |/  / /     |  |       |  |       |  |    \  | /  /   \  \
+           /| / /| /      |  |___/|  |  |       |  |     | | |  |   |  |
+          /_|/ // /       |   ___ |  |  |       |  |     | | |  |___|  |
+         /\ / |/ //\      |  |   \|  |  |       |  |     | | |   ___   |
+        /  / /  //  \     |  |       |  |       |  |    /  | |  |   |  |
+       /  / // /|    \    |  |    /| |  |    /| |  |   /  /  |  |   |  |
+      /__/ // / |_____\   |  |___/ | |  |___/ | |  |__/  /   |  |   |  |
+        / // /| |        /_________|/_________|/________/   /____\ /____\
+       /  / / | |       /|
+      /    /| | |______/ |
+     /______| | |________|
+            | | |
+            | | |
+            | | |
+            | | |
+            | | |
+             \|/
+              V
+*
+* Template name : Prácticas
+* Version       : 1.1
+* Author        : L-1 DIGITAL STUDIO
+* Author URL    : https://l1ds.co/
+*
+-----------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(images/bg/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero #slogan {
+    position: relative;
+    font-size: 8em;
+    color: #fff;
+}
+
+.hero .scroll {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 100px;
+}
+
+.hero .scroll span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: scroll 2s infinite;
+}
+
+.hero .scroll span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.hero .scroll span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+.hero .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero .clouds img {
+    position: absolute;
+    bottom: 0;
+    height: 50%;
+    max-width: 100%;
+    animation: animate calc(3s * var(--i)) linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    25%,
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+    }
+}
+
+section {
+    position: relative;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1300px;
+    grid-gap: 20px;
+    margin: 0px auto 50px auto;
+}
+
+.container .box {
+    position: relative;
+    width: 100%;
+    break-inside: avoid;
+    transition: 1s;
+}
+
+.container .box img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.container .box:nth-child(3n+1) {
+    transform: translate(-400px, 0) scale(0);
+}
+
+.container .box:nth-child(3n+2) {
+    transform: translate(0, 400px) scale(0);
+}
+
+.container .box:nth-child(3n+3) {
+    transform: translate(400px, 0) scale(0);
+}
+
+.container .box.active {
+    transform: translate(0, 0) scale(1);
+}
+
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero .clouds img {
+        height: 25%;
+    }
+
+    .container .box:nth-child(2n+1) {
+        transform: translate(0, 400px) scale(0);
+    }
+    
+    .container .box:nth-child(2n+2) {
+        transform: translate(0, 400px) scale(0);
+    }
+
+    .container .box.active {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@media (max-width: 991px) {
+    .hero #slogan {
+        font-size: 7em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero #slogan {
+        font-size: 3.5em;
+    }
+}
